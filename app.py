@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-gemini_client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+api_key = st.secrets.get("GOOGLE_API_KEY") or os.getenv("GOOGLE_API_KEY")
+gemini_client = genai.Client(api_key=api_key)
 
 st.set_page_config(page_title="포트폴리오 현황", layout="wide")
 st.title("주식 포트폴리오 현황")
